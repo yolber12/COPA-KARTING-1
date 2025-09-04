@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +17,10 @@
         .font-teko {
             font-family: 'Teko', sans-serif;
         }
+        /* --- IMAGEN DE FONDO MEJORADA --- */
+        /* Reemplazada la imagen local con una URL de alta resolución para que el sitio sea autónomo y se vea profesional */
         .bg-hero {
-            /* Reemplazada la imagen local con una URL para que el sitio sea completamente autónomo */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG_8272.png');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('IMG_8272');
             background-size: cover;
             background-position: center;
         }
@@ -37,6 +38,7 @@
         }
         .content-panel.active {
             display: block;
+            animation: fadeIn 0.5s ease-in-out;
         }
         .chart-container {
             position: relative;
@@ -48,12 +50,12 @@
             max-height: 380px;
         }
         .blur-shadow {
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
         }
         .fade-in-up {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
+            transform: translateY(25px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .fade-in-up.visible {
             opacity: 1;
@@ -75,11 +77,19 @@
             background-color: #e0e0e0;
             color: #333;
         }
+         .participation-tab.inactive:hover {
+            background-color: #d1d1d1;
+        }
         .participation-content {
             display: none;
         }
         .participation-content.active {
             display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @media (min-width: 768px) {
             .chart-container {
@@ -91,27 +101,27 @@
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Navbar -->
-    <header class="bg-black bg-opacity-80 backdrop-blur-sm sticky top-0 z-50">
+    <header class="bg-black bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <span class="font-teko text-3xl font-bold text-yellow-400">TURPIAL RACING</span>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#evento" class="text-white hover:text-yellow-400 transition">El Evento</a>
-                <a href="#beneficios" class="text-white hover:text-yellow-400 transition">Beneficios</a>
-                <a href="#participar" class="text-white hover:text-yellow-400 transition">Participar</a>
-                <a href="#contacto" class="text-white hover:text-yellow-400 transition">Contacto</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#evento" class="text-white hover:text-yellow-400 transition duration-300">El Evento</a>
+                <a href="#beneficios" class="text-white hover:text-yellow-400 transition duration-300">Beneficios</a>
+                <a href="#participar" class="text-white hover:text-yellow-400 transition duration-300">Participar</a>
+                <a href="#contacto" class="text-white hover:text-yellow-400 transition duration-300">Contacto</a>
             </div>
-            <a href="https://wa.link/mhauf4" target="_blank" class="hidden md:block bg-yellow-400 text-black font-bold py-2 px-4 rounded-md hover:bg-yellow-500 transition">¡Inscribe tu Marca!</a>
+            <a href="https://wa.link/mhauf4" target="_blank" class="hidden md:block bg-yellow-400 text-black font-bold py-2 px-4 rounded-md hover:bg-yellow-500 transition duration-300 transform hover:scale-105">¡Inscribe tu Marca!</a>
         </nav>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="bg-hero text-white h-[80vh] flex flex-col justify-center items-center text-center p-4">
-            <h1 class="font-teko text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-wider">Copa Turpial Racing 2025</h1>
+        <section class="bg-hero text-white h-screen min-h-[600px] flex flex-col justify-center items-center text-center p-4">
+            <h1 class="font-teko text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-wider animate-fadeIn">Copa Turpial Racing 2025</h1>
             <p class="text-xl md:text-2xl mt-2 mb-6 font-light">La mejor experiencia de karting 2025.</p>
-            <div class="bg-black bg-opacity-50 p-4 rounded-lg flex flex-col md:flex-row gap-4 md:gap-8 text-yellow-400">
+            <div class="bg-black bg-opacity-60 backdrop-blur-sm p-4 rounded-lg flex flex-col md:flex-row gap-4 md:gap-8 text-yellow-400 border border-yellow-400/30">
                 <div class="text-center">
                     <p class="font-bold text-xl">🗓️ Fecha</p>
                     <p class="text-lg">22 de Noviembre, 2025</p>
@@ -138,22 +148,22 @@
                 
                 <h3 class="font-teko text-4xl font-semibold mb-8">Formato de la Competencia</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400">
+                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400 transition duration-300 hover:transform hover:-translate-y-2">
                         <p class="text-5xl font-bold">10</p>
                         <p class="text-xl font-semibold mt-2">Equipos</p>
                         <p class="text-gray-600 mt-2">Diez marcas compitiendo por la gloria.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400">
+                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400 transition duration-300 hover:transform hover:-translate-y-2">
                         <p class="text-5xl font-bold">5</p>
                         <p class="text-xl font-semibold mt-2">Participantes</p>
                         <p class="text-gray-600 mt-2">Por equipo, fomentando el trabajo colaborativo.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400">
+                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400 transition duration-300 hover:transform hover:-translate-y-2">
                         <p class="text-5xl font-bold">5</p>
                         <p class="text-xl font-semibold mt-2">Clasificatorias</p>
                         <p class="text-gray-600 mt-2">Sesiones para definir a los más rápidos.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400">
+                    <div class="bg-gray-100 p-6 rounded-lg blur-shadow border-l-4 border-yellow-400 transition duration-300 hover:transform hover:-translate-y-2">
                         <p class="text-5xl font-bold">1</p>
                         <p class="text-xl font-semibold mt-2">Carrera Final</p>
                         <p class="text-gray-600 mt-2">La batalla definitiva por el podio.</p>
@@ -168,7 +178,9 @@
                 <div class="text-center mb-12">
                     <h2 class="font-teko text-5xl font-bold mb-4">Más que una Carrera, una Inversión Estratégica</h2>
                     <p class="max-w-3xl mx-auto text-lg text-gray-600">
-                        Participar en la Copa Turpial Racing ofrece un retorno de inversión medible en visibilidad, relaciones y moral de equipo. Explora los beneficios clave que tu marca obtendrá al unirse a la parrilla de salida.
+                        La Copa Turpial Racing es mucho más que una competencia de velocidad; es una plataforma de marketing de alto impacto donde su marca no solo patrocina, sino que se convierte en un competidor activo. Aquí, el retorno de inversión se mide en centímetros de asfalto, decibelios de emoción y millones de impresiones.
+                        <br><br>
+                        Al alinear su marca con la emoción pura del automovilismo, accede a un público apasionado y leal, transformando su inversión en beneficios tangibles para su negocio.
                     </p>
                 </div>
 
@@ -176,9 +188,9 @@
                     <div class="w-full lg:w-1/2">
                         <div class="flex flex-wrap gap-2 mb-4">
                             <button class="tab-button tab-active flex-grow py-3 px-4 rounded-md transition" data-tab="visibilidad">🚀 Visibilidad y Marca</button>
-                            <button class="tab-button tab-inactive flex-grow py-3 px-4 rounded-md transition" data-tab="networking">🤝 Networking</button>
-                            <button class="tab-button tab-inactive flex-grow py-3 px-4 rounded-md transition" data-tab="equipo">🏆 Espíritu de Equipo</button>
-                            <button class="tab-button tab-inactive flex-grow py-3 px-4 rounded-md transition" data-tab="contenido">📸 Contenido de Calidad</button>
+                            <button class="tab-button tab-inactive flex-grow py-3 px-4 rounded-md transition hover:bg-gray-300" data-tab="networking">🤝 Networking</button>
+                            <button class="tab-button tab-inactive flex-grow py-3 px-4 rounded-md transition hover:bg-gray-300" data-tab="equipo">🏆 Espíritu de Equipo</button>
+                            <button class="tab-button tab-inactive flex-grow py-3 px-4 rounded-md transition hover:bg-gray-300" data-tab="contenido">📸 Contenido de Calidad</button>
                         </div>
                         <div id="visibilidad" class="content-panel active bg-white p-6 rounded-lg blur-shadow">
                             <h4 class="font-bold text-xl mb-2">Máxima Exposición para tu Marca</h4>
@@ -228,36 +240,35 @@
                     </p>
                 </div>
                 
-                <div class="flex justify-center mb-8">
-                    <div class="flex space-x-4">
-                        <div class="participation-tab active" data-target="competidor">
-                            Participación como Competidor
+                <div class="flex justify-center mb-8 bg-gray-100 p-2 rounded-lg max-w-lg mx-auto">
+                    <div class="flex w-full">
+                        <div class="participation-tab active w-1/2" data-target="competidor">
+                            Competidor
                         </div>
-                        <div class="participation-tab inactive" data-target="patrocinador">
-                            Activación como Patrocinador
+                        <div class="participation-tab inactive w-1/2" data-target="patrocinador">
+                            Patrocinador
                         </div>
                     </div>
                 </div>
                 
                 <div class="participation-content active" id="competidor-content">
                     <div class="bg-gray-50 p-8 rounded-lg blur-shadow">
-                        <h3 class="font-teko text-4xl font-bold mb-4 text-center">Participación como Competidor</h3>
+                        <h3 class="font-teko text-4xl font-bold mb-4 text-center">Marca a participar en la carrera</h3>
                         <p class="text-gray-600 text-center mb-6">
-                            El proceso de inscripción es sencillo y directo. Sigue estos pasos para asegurar tu lugar en la competencia y empezar a planificar tu estrategia para la victoria.
+                            Asegura un espacio de exposición para tu marca y maximiza tu visibilidad en el evento.
                         </p>
-                        <div class="flex flex-col md:flex-row gap-8">
-                            <div class="flex flex-col items-center w-full md:w-1/2">
-                                <div class="bg-yellow-400 text-black rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">1</div>
-                                <div class="p-6 mt-4 text-center">
-                                    <h4 class="font-bold text-xl mb-2">Inscripción y Costo</h4>
-                                    <p class="text-gray-600">Realiza una inversión de <span class="font-bold">$200 USD</span> por marca para asegurar tu cupo de 5 participantes.</p>
-                                </div>
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="flex-1 text-center p-6 bg-white rounded-lg border">
+                                <div class="bg-yellow-400 text-black rounded-full h-12 w-12 flex items-center justify-center font-bold text-2xl mx-auto mb-4">1</div>
+                                <h4 class="font-bold text-xl mb-2">Inscripción</h4>
+                                <p class="text-gray-600">Realiza una inversión de <span class="font-extrabold text-2xl block my-2 text-gray-800">$200 USD</span> para optar por tu cupo de 3 participantes.</p>
                             </div>
-                            <div class="flex flex-col items-center w-full md:w-1/2">
-                                <div class="bg-yellow-400 text-black rounded-full h-16 w-16 flex items-center justify-center font-bold text-2xl">2</div>
-                                <div class="p-6 mt-4 text-center">
-                                    <h4 class="font-bold text-xl mb-2">Prepara tu Equipo</h4>
-                                    <p class="text-gray-600">Cada marca deberá contar con un uniforme personalizado y deberá otorgar un premio de valor para la premiación final.</p>
+                            <div class="flex-1 text-center p-6 bg-white rounded-lg border">
+                                <div class="bg-yellow-400 text-black rounded-full h-12 w-12 flex items-center justify-center font-bold text-2xl mx-auto mb-4">2</div>
+                                <h4 class="font-bold text-xl mb-2">Prepara tu Equipo</h4>
+                                <div class="space-y-2 text-gray-600">
+                                    <p>• Uniforme Personalizado: Cada equipo de marca deberá contar con un uniforme personalizado y distintivo.</p>
+                                    <p>• Capacitación del Equipo: Los equipos recibirán una capacitación completa sobre las normativas y procedimientos de la carrera de Karting.</p>
                                 </div>
                             </div>
                         </div>
@@ -270,63 +281,81 @@
                         <p class="text-gray-600 text-center mb-6">
                             Asegura un espacio de exposición para tu marca y maximiza tu visibilidad en el evento.
                         </p>
-                        <div class="text-center mb-6">
-                            <h4 class="font-bold text-xl mb-2">Recibirás un espacio para un stand de 4x4 en la plaza central para promocionar tus productos y servicios.</h4>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div class="bg-white p-4 rounded-lg">
-                                <h4 class="font-bold text-lg mb-2">Beneficios del Paquete Full</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 items-center">
+                            <div class="bg-white p-6 rounded-lg border">
+                                <h4 class="font-bold text-lg mb-2">Paquete de Patrocinante:</h4>
                                 <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                    <li>Logo en backing principal del evento</li>
-                                    <li>Publicidad en pantalla del evento</li>
-                                    <li>Activación con el narrador del evento</li>
-                                    <li>Acceso a zona de espectadores</li>
-                                    <li>Presencia por parte de la prensa</li>
+                                    <li>Stand de 4x4 en el estacionamiento de Wynwood Park.</li>
+                                    <li>Logo en Backing principal del evento.</li>
+                                    <li>Publicidad en pantalla del evento.</li>
+                                    <li>Activación con el narrador.</li>
+                                    <li>Acceso a zona de espectadores.</li>
+                                    <li>Acceso a promotoras para activación de la marca.</li>
+                                    <li>Cobertura de Medios 360°.</li>
+                                    <li>Otorgar un premio de valor para las premiaciones finales de la copa.</li>
                                 </ul>
                             </div>
-                            <div class="bg-white p-4 rounded-lg flex flex-col justify-center">
-                                <p class="font-bold text-2xl text-yellow-500 text-center">Costo por todo este paquete full: $500 USD</p>
+                            <div class="bg-white p-6 rounded-lg border flex flex-col justify-center text-center">
+                                <p class="text-gray-600 font-semibold">Inversión total del paquete</p>
+                                <p class="font-bold text-4xl text-yellow-500">$500 USD</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Contacto Section -->
+        <section id="contacto" class="py-16 md:py-24 bg-yellow-400 text-black">
+            <div class="container mx-auto px-6 text-center fade-in-up">
+                 <h2 class="font-teko text-5xl font-bold mb-4">¿Listos para Acelerar?</h2>
+                 <p class="max-w-xl mx-auto mb-8 text-lg">
+                     Contacta con nuestro equipo para formalizar tu inscripción o resolver cualquier duda. ¡No te quedes fuera!
+                 </p>
+                 <div class="mb-8">
+                     <a href="https://wa.link/mhauf4" target="_blank" class="bg-black text-yellow-400 font-bold py-3 px-8 rounded-md hover:bg-gray-800 transition duration-300 inline-block transform hover:scale-105">¡Contáctanos Ahora!</a>
+                 </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Contacto Section -->
-    <footer id="contacto" class="bg-black text-white pt-12 pb-8">
+    <footer class="bg-black text-white pt-12 pb-8">
         <div class="container mx-auto px-6 text-center">
-             <h2 class="font-teko text-4xl font-bold text-yellow-400 mb-4">¿Listos para Acelerar?</h2>
-             <p class="max-w-xl mx-auto mb-8">
-                 Contacta con nuestro equipo para formalizar tu inscripción o resolver cualquier duda.
-             </p>
-             <p class="mb-2 font-bold text-lg">Correo: mercadeoturpialairlines@gmail.com</p>
-             <a href="https://wa.link/mhauf4" target="_blank" class="text-lg font-bold text-yellow-400 hover:text-yellow-500 transition">Número de contacto: https://wa.link/mhauf4</a>
-             <div class="mt-8 mb-8">
-                 <a href="https://wa.link/mhauf4" target="_blank" class="bg-yellow-400 text-black font-bold py-3 px-6 rounded-md hover:bg-yellow-500 transition inline-block">¡Contáctanos ahora!</a>
+             <div class="flex justify-center space-x-6 mb-8">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/turpialairlines/?hl=es" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.087C8.74 1.076 8.47 1.088 7.42 1.134c-1.15.053-1.946.223-2.63.498-1.345.545-2.291 1.491-2.836 2.836-.275.684-.445 1.48-.498 2.63C1.088 8.47 1.076 8.74 1.076 12s.012 3.53.058 4.58c.053 1.15.223 1.946.498 2.63.545 1.345 1.491 2.291 2.836 2.836.684.275 1.48.445 2.63.498 1.05.046 1.32.058 4.58.058s3.53-.012 4.58-.058c1.15-.053 1.946-.223 2.63-.498 1.345-.545 2.291-1.491 2.836-2.836.275-.684.445-1.48.498-2.63.046-1.05.058-1.32.058-4.58s-.012-3.53-.058-4.58c-.053-1.15-.223-1.946-.498-2.63-.545-1.345-1.491-2.291-2.836-2.836-.684-.275-1.48-.445-2.63-.498C15.53 1.088 15.26 1.076 12 1.076z M12 6.873c-2.849 0-5.157 2.308-5.157 5.157s2.308 5.157 5.157 5.157 5.157-2.308 5.157-5.157S14.849 6.873 12 6.873zm0 8.442c-1.815 0-3.285-1.47-3.285-3.285s1.47-3.285 3.285-3.285 3.285 1.47 3.285 3.285-1.47 3.285-3.285 3.285zm4.905-6.845c-.796 0-1.44.644-1.44 1.44s.644 1.44 1.44 1.44c.795 0 1.439-.644 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <!-- Youtube -->
+                <a href="https://www.youtube.com/@turpialairlinestv" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.887 3.427 0 4.288 0 8.25v7.5C0 19.712.887 20.573 4.385 20.816c3.6.245 11.626.246 15.23 0 3.498-.243 4.385-1.104 4.385-5.066v-7.5c0-3.962-.887-4.823-4.385-5.066zM9.75 16.5v-9l6.75 4.5-6.75 4.5z"/></svg>
+                </a>
+                <!-- Website -->
+                <a href="https://www.turpialairlines.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </a>
              </div>
-             <p class="text-gray-400 text-sm">© 2025 propuesta diseñada por el Lcdo. Yolber Montañez. Todos los derechos reservados.</p>
+             <p class="text-gray-500 text-sm">© 2025 propuesta diseñada por el Lcdo. Yolber Montañez. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Tabs de beneficios
-            const tabs = document.querySelectorAll('.tab-button');
-            const contentPanels = document.querySelectorAll('.content-panel');
+            const benefitTabs = document.querySelectorAll('.tab-button');
+            const benefitContentPanels = document.querySelectorAll('.content-panel');
 
-            tabs.forEach(tab => {
+            benefitTabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    tabs.forEach(t => {
+                    benefitTabs.forEach(t => {
                         t.classList.remove('tab-active');
-                        t.classList.add('tab-inactive');
+                        t.classList.add('tab-inactive', 'hover:bg-gray-300');
                     });
-                    tab.classList.remove('tab-inactive');
                     tab.classList.add('tab-active');
+                    tab.classList.remove('tab-inactive', 'hover:bg-gray-300');
 
                     const target = tab.getAttribute('data-tab');
-                    contentPanels.forEach(panel => {
+                    benefitContentPanels.forEach(panel => {
                         if (panel.id === target) {
                             panel.classList.add('active');
                         } else {
@@ -346,8 +375,8 @@
                         t.classList.remove('active');
                         t.classList.add('inactive');
                     });
-                    tab.classList.remove('inactive');
                     tab.classList.add('active');
+                    tab.classList.remove('inactive');
 
                     const target = tab.getAttribute('data-target');
                     participationContents.forEach(content => {
@@ -413,19 +442,7 @@
                 }
             });
             
-            // Scroll suave
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    if (this.getAttribute('href') !== '#') {
-                        e.preventDefault();
-                        document.querySelector(this.getAttribute('href')).scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Animación de aparición
+            // Animación de aparición al hacer scroll
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -441,4 +458,3 @@
     </script>
 </body>
 </html>
-
